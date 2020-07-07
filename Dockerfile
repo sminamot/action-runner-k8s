@@ -25,9 +25,7 @@ RUN apt-get update \
     && go install
 
 # base image
-ARG VERSION
-
-FROM sminamot/actions-runner:${VERSION} as base
+FROM sminamot/actions-runner:2.267.0 as base
 
 FROM base as base-amd64
 ARG KUBECTL_ARCH=amd64
@@ -39,8 +37,8 @@ ARG KUBECTL_ARCH=arm
 FROM base-$TARGETARCH
 ARG KUBECTL_VERSION
 
-RUN wget -O /usr/localbin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl \
-    && chmod +x /usr/localbin/kubectl
+RUN sudo wget -O /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl \
+    && sudo chmod +x /usr/local/bin/kubectl
 
 COPY --from=build-kustomize /go/bin/kustomize /usr/local/bin/kustomize
 COPY --from=build-sops /go/bin/sops /usr/local/bin/sops

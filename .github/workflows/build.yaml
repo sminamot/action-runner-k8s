@@ -29,12 +29,10 @@ jobs:
 
       - name: Build and Publish
         run: |
-          BASE_RUNNER_VERSION=$(<base-runner-version)
           KUBECTL_VERSION=$(<kubectl-version)
           KUSTOMIZE_VERSION=$(<kustomize-version)
           SOPS_VERSION=$(<sops-version)
           docker buildx build \
-            --build-arg VERSION=$BASE_RUNNER_VERSION \
             --build-arg KUBECTL_VERSION=$KUBECTL_VERSION \
             --build-arg KUSTOMIZE_VERSION=$KUSTOMIZE_VERSION \
             --build-arg SOPS_VERSION=$SOPS_VERSION \
