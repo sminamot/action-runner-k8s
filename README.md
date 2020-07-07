@@ -1,7 +1,7 @@
 # actions-runner-k8s
 
 ## base image
-https://hub.docker.com/repository/docker/sminamot/actions-runner
+[sminamot/actions-runner:2.267.0](https://hub.docker.com/repository/registry-1.docker.io/sminamot/actions-runner/tags)
 
 ## extra tools
 
