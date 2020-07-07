@@ -29,7 +29,6 @@ jobs:
 
       - name: Build and Publish
         run: |
-          GITHUB_RUNNER_VERSION=$(<github_runner-version)
           KUBECTL_VERSION=$(<kubectl-version)
           KUSTOMIZE_VERSION=$(<kustomize-version)
           SOPS_VERSION=$(<sops-version)
